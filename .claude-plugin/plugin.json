@@ -1,0 +1,13 @@
+{
+  "name": "pdfbolt",
+  "displayName": "PDFBolt",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "Generate PDFs from HTML, web pages, or saved templates. Create, preview, and manage reusable PDF templates with PDFBolt.",
+  "author": {
+    "name": "PDFBolt",
+    "email": "contact@pdfbolt.com",
+    "url": "https://pdfbolt.com"
+  },
+  "homepage": "https://pdfbolt.com/docs/pdf-mcp-server"
+}

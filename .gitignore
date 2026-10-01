@@ -1,0 +1,9 @@
+.idea/
+.DS_Store
+*.zip
+test-results/
+.env
+.env.*
+.claude/
+*.pem
+*.key

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "pdfbolt": {
+      "type": "http",
+      "url": "https://api.pdfbolt.com/mcp"
+    }
+  }
+}

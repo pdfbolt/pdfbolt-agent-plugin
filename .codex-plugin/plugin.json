@@ -1,0 +1,33 @@
+{
+  "name": "pdfbolt",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "Generate PDFs from HTML, web pages, or saved templates. Create, preview, and manage reusable PDF templates with PDFBolt.",
+  "author": {
+    "name": "PDFBolt",
+    "email": "contact@pdfbolt.com",
+    "url": "https://pdfbolt.com"
+  },
+  "homepage": "https://pdfbolt.com/docs/pdf-mcp-server",
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "PDFBolt",
+    "shortDescription": "Generate PDFs and templates",
+    "longDescription": "Generate PDFs from HTML, web pages, or published PDFBolt templates. Create and edit reusable template drafts, validate content, preview and compare PDFs, and publish or delete templates when requested. Connect a PDFBolt account through OAuth. New Free accounts include starter conversion credits. Rendering uses conversion credits; listing templates, checking usage, and validating content does not.",
+    "developerName": "PDFBolt",
+    "category": "Productivity",
+    "capabilities": ["Generate PDFs", "Manage PDF templates", "Check conversion usage"],
+    "websiteURL": "https://pdfbolt.com",
+    "supportURL": "https://pdfbolt.com/contact",
+    "privacyPolicyURL": "https://pdfbolt.com/privacy",
+    "termsOfServiceURL": "https://pdfbolt.com/terms",
+    "logo": "./assets/logo.png",
+    "composerIcon": "./assets/logo.png",
+    "defaultPrompt": [
+      "Use PDFBolt to generate a one-page project proposal PDF with placeholder details.",
+      "Create a reusable PDFBolt proposal template, preview it, and save a draft without publishing.",
+      "List my PDFBolt templates and check my usage without changing or rendering anything."
+    ]
+  }
+}
