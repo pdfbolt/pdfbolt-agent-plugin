@@ -14,7 +14,7 @@
   "interface": {
     "displayName": "PDFBolt",
     "shortDescription": "Generate PDFs and templates",
-    "longDescription": "Generate PDFs from HTML, web pages, or published PDFBolt templates. Create and edit reusable template drafts, validate content, preview and compare PDFs, and publish or delete templates when requested. Connect a PDFBolt account through OAuth. New Free accounts include starter conversion credits. Rendering uses conversion credits; listing templates, checking usage, and validating content does not.",
+    "longDescription": "Generate PDFs from HTML, web pages, or published PDFBolt templates. Create and edit reusable template drafts, validate content, preview and compare PDFs, and publish or delete templates when requested. Connect a PDFBolt account through OAuth. Rendering uses conversion credits; listing templates, checking usage, and validating content does not.",
     "developerName": "PDFBolt",
     "category": "Productivity",
     "capabilities": ["Generate PDFs", "Manage PDF templates", "Check conversion usage"],
