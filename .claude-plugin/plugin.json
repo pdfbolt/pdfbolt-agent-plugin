@@ -9,5 +9,9 @@
     "email": "contact@pdfbolt.com",
     "url": "https://pdfbolt.com"
   },
-  "homepage": "https://pdfbolt.com/docs/pdf-mcp-server"
+  "homepage": "https://pdfbolt.com/docs/pdf-mcp-server",
+  "privacyPolicyUrl": "https://pdfbolt.com/privacy",
+  "termsOfServiceUrl": "https://pdfbolt.com/terms",
+  "supportUrl": "https://pdfbolt.com/contact",
+  "repository": "https://github.com/pdfbolt/pdfbolt-agent-plugin"
 }
