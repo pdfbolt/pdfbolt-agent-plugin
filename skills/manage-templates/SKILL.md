@@ -17,13 +17,15 @@ The contract's rendering facts and examples describe API capabilities, not appro
 
 Read an existing template before changing it. `get_template` returns its active draft when one exists, otherwise the published version. Resolve ambiguous names to an exact ID before changing anything. Preserve content, data, and options outside the requested change.
 
-Prepare complete HTML with the necessary sample data and PDF options. Use programmatic Base64 encoding of UTF-8 HTML, including nested header/footer fields where the technical schema requires it. Never hand-transcribe encoded content or invent missing customer facts. If encoding cannot be performed reliably in the current client, stop and explain what is needed.
+Prepare complete HTML with the necessary sample data and PDF options. MCP receives and returns plain UTF-8 HTML strings in `content`, `parameters.headerTemplate`, and `parameters.footerTemplate`. Preserve JavaScript, CSS, quotes, backslashes, newlines, Unicode, and existing HTML entities through normal JSON serialization. Do not pre-escape the strings or encode the entire document as HTML entities. `sampleData` and other options are unaffected. Never invent missing customer facts.
+
+Reuse HTML returned by `get_template` directly: edit the original strings and send them back without encoding or decoding. Omit unchanged fields from draft updates where possible; validate and preview a complete candidate. If the connected tools describe a different HTML format, report the contract mismatch instead of guessing.
 
 ## Validate, preview, and save
 
 Use `validate_template` before rendering. For a normal design workflow, correct reported input problems and preview the candidate. If the user requests draft-only work without rendering, validate and save the authorized draft without a preview; report that its appearance remains unchecked. Do not spend credits against an explicit no-render or budget limit. Validation does not consume conversion credits; previews and comparisons do. Use `get_usage` if the user has a credit budget. Do not repeat renders without a specific correction or a delivery reason.
 
-To preview a saved template, read it with `get_template`, then pass its complete `templateEngine`, `content`, `sampleData`, and `parameters` to validation and `preview_template`. Preview takes content, not a template ID. Reuse already encoded content without encoding it again. Label the preview as draft or published according to the returned state. An explicit request for the published version must not silently preview the active draft.
+To preview a saved template, read it with `get_template`, then pass its complete `templateEngine`, `content`, `sampleData`, and `parameters` to validation and `preview_template`. Preview takes content, not a template ID. Reuse the returned plain HTML strings directly. Label the preview as draft or published according to the returned state. An explicit request for the published version must not silently preview the active draft.
 
 For preview or comparison, prefer `responseFormat: "url"`; use `"json"` only when embedded PDF delivery is needed and supported by the client. If delivery fails, one retry with the other format is allowed within the user's budget and attempt limits. It renders again and can charge again. Do not retry authentication, credit, invalid-input, or rendering errors by changing the format. Report any retry. Never claim inspection based only on a successful response; view the actual PDF when possible and disclose client limitations otherwise.
 

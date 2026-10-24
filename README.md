@@ -2,7 +2,7 @@
 
 Generate PDFs from HTML, web pages, or published PDFBolt templates. The plugin also helps you create reusable templates, preview changes, and manage drafts and published versions.
 
-Version 1.0.0 includes Claude and OpenAI manifests, two shared skills, and one remote MCP server. OpenAI end-to-end compatibility has not yet been verified.
+Version 1.0.1 includes Claude and OpenAI manifests, two shared skills, and one remote MCP server. OpenAI end-to-end compatibility has not yet been verified.
 
 The plugin files are available under the [MIT License](LICENSE). This license does not cover the PDFBolt backend or grant access to the hosted service. PDFBolt account requirements, service terms, and conversion-credit limits still apply.
 
@@ -43,7 +43,7 @@ For public submission, use OpenAI's MCP-backed submission path, not Skills only.
 
 The connector sends the requested HTML, URLs, template data, and conversion options to PDFBolt. URL conversion may fetch the target page and its resources. Template operations read or modify the connected account's templates. Only provide content you are authorized to process.
 
-PDF delivery uses temporary confidential download URLs or embedded PDF resources. Downloading, saving, and visually inspecting them depends on the client's capabilities and permissions. The plugin cannot guarantee local file delivery on every client. HTML authoring requires reliable programmatic UTF-8 Base64 encoding; clients without execution support may need a supplied URL or an existing published template. Switching delivery modes creates another conversion and can consume more credits; explicit user limits take precedence.
+PDF delivery uses temporary confidential download URLs or embedded PDF resources. Downloading, saving, and visually inspecting them depends on the client's capabilities and permissions. The plugin cannot guarantee local file delivery on every client. MCP receives and returns HTML as plain UTF-8 JSON strings, including saved template content, headers, and footers. Agents do not encode or decode HTML. The adapter handles the existing internal storage and REST representation; REST API clients are unaffected. Switching delivery modes creates another conversion and can consume more credits; explicit user limits take precedence.
 
 Draft changes do not affect published-template conversions until publication. Publishing and deletion require user authorization. The plugin does not need unrelated workspace files or chat history.
 
@@ -56,3 +56,17 @@ If tools are unavailable, check that PDFBolt is connected and OAuth sign-in comp
 Contact [contact@pdfbolt.com](mailto:contact@pdfbolt.com) with the client version, tool name, timestamp, and error. Do not send access tokens, confidential PDF URLs, or customer document content.
 
 References: [PDFBolt MCP documentation](https://pdfbolt.com/docs/pdf-mcp-server), [Claude submission checklist](https://claude.com/docs/plugins/pre-submission-checklist), [OpenAI packaging](https://developers.openai.com/plugins/build/plugins), and [OpenAI migration guide](https://developers.openai.com/plugins/guides/submit-claude-plugin).
+
+## Release 1.0.1
+
+MCP now accepts and returns plain HTML strings, including saved template content, headers, and footers. This changes the previous MCP HTML contract. REST API encoding is unchanged. Refresh the plugin and MCP tools, then start a new conversation after the backend and plugin update.
+
+Build the shared Claude/OpenAI package from the current source:
+
+```sh
+python3 scripts/package_plugin.py
+```
+
+Use `pdfbolt-1.0.1.zip`. The packaging script includes only the manifests, MCP configuration, skills, assets, README, and license from the current source.
+
+For the existing Claude directory listing, release the updated source on its tracked branch or tag and check the new version in the developer portal. The listing continues serving the previous published version until the update is published. A local ZIP build does not publish the plugin or deploy its backend. Test the updated plugin against the matching backend before publication, including PDF generation and a template read/edit/preview/save cycle.
