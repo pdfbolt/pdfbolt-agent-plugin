@@ -1,7 +1,7 @@
 {
   "name": "pdfbolt",
   "displayName": "PDFBolt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "description": "Generate PDFs from HTML, web pages, or saved templates. Create, preview, and manage reusable PDF templates with PDFBolt.",
   "author": {
